@@ -1,6 +1,6 @@
 {
   "name": "@wazframe/dependency-extraction-webpack-plugin",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "WazFrame Dependency Extraction Webpack Plugin",
   "author": "Frank Wazeter",
   "license": "GPL-2.0-or-later",
@@ -20,7 +20,9 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
-    "@wordpress/dependency-extraction-webpack-plugin": "^3.6.0"
+    "webpack": "^5.73.0",
+    "webpack-sources": "^3.2.3",
+    "json2php": "^0.0.5"
   },
   "publishConfig": {
     "access": "public"
