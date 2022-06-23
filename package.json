@@ -1,21 +1,24 @@
 {
   "name": "@wazframe/dependency-extraction-webpack-plugin",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "WazFrame Dependency Extraction Webpack Plugin",
   "author": "Frank Wazeter",
   "license": "GPL-2.0-or-later",
   "keywords": [
     "wordpress"
   ],
-  "homepage": "",
+  "homepage": "https://github.com/fwazeter/wazframe-dependency-extraction-webpack-plugin/blob/main/README.md",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/fwazeter/wazframe-dependency-extraction-webpack-plugin.git"
   },
   "bugs": {
-    "url": ""
+    "url": "https://github.com/fwazeter/wazframe-dependency-extraction-webpack-plugin/issues"
   },
   "main": "src/index.js",
+  "scripts": {
+    "build": "webpack --mode production"
+  },
   "dependencies": {
     "@wordpress/dependency-extraction-webpack-plugin": "^3.6.0"
   },
@@ -24,6 +27,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.5",
+    "babel-loader": "^8.2.5",
     "jest": "^28.1.1",
     "jest-cli": "^28.1.1",
     "rimraf": "^3.0.2",

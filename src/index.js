@@ -17,11 +17,16 @@ function camelCaseDash( string ) {
     return string.replace( /-([a-z])/g, ( _, letter ) => letter.toUpperCase() );
 }
 
-const wfRequestToExternal = ( request ) => {
+const wfRequestToExternal = ( request, excludedExternals ) => {
     if ( packages.includes( request ) ) {
         const handle = request.substring( WAZFRAME_NAMESPACE.length );
 
-        return [ 'wazf', camelCaseDash( handle ) ];
+        if ( ( excludedExternals || [] ).includes( request ) ) {
+            return;
+        }
+
+        // wazframe[blockEditor]
+        return [ 'wazframe', camelCaseDash( handle ) ];
 
     }
 };
@@ -30,7 +35,8 @@ const wfRequestToHandle = ( request ) => {
     if ( packages.includes( request ) ) {
         const handle = request.substring( WAZFRAME_NAMESPACE.length );
 
-        return 'wf-' + handle;
+        // wazframe-block-editor
+        return 'wazframe-' + handle;
     }
 }
 
