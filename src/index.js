@@ -1,21 +1,10 @@
 const WPDependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
 const packages = require( '../assets/packages' );
 
+const { defaultRequestToExternal, defaultRequestToHandle, camelCaseDash } = require( './utils' );
+
 const WAZFRAME_NAMESPACE = '@wazframe/'
 
-/**
- * Given a string, returns a new string with dash separators converted to
- * camelCase equivalent. This is not as aggressive as `_.camelCase` in
- * converting to uppercase, where Lodash will also capitalize letters
- * following numbers.
- *
- * @param {string} string Input dash-delimited string.
- *
- * @return {string} Camel-cased string.
- */
-function camelCaseDash( string ) {
-    return string.replace( /-([a-z])/g, ( _, letter ) => letter.toUpperCase() );
-}
 
 const wfRequestToExternal = ( request, excludedExternals ) => {
     if ( packages.includes( request ) ) {
@@ -55,10 +44,7 @@ class DependencyExtractionWebpackPlugin extends WPDependencyExtractionWebpackPlu
             typeof externalRequest === 'undefined' &&
             this.options.useDefaults
         ) {
-            externalRequest = wfRequestToExternal(
-                request,
-                this.options.bundledPackages || []
-            );
+            externalRequest = defaultRequestToExternal( request );
         }
 
         if ( externalRequest ) {
@@ -82,7 +68,7 @@ class DependencyExtractionWebpackPlugin extends WPDependencyExtractionWebpackPlu
 
         // Cascade to default if enabled
         if ( this.options.useDefaults ) {
-            const scriptDependency = wfRequestToHandle( request );
+            const scriptDependency = defaultRequestToHandle( request );
             if ( scriptDependency ) {
                 return scriptDependency;
             }

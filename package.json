@@ -1,6 +1,6 @@
 {
   "name": "@wazframe/dependency-extraction-webpack-plugin",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "WazFrame Dependency Extraction Webpack Plugin",
   "author": "Frank Wazeter",
   "license": "GPL-2.0-or-later",
